@@ -9,7 +9,7 @@ const ENV = process.env.NODE_ENV || "development";
 const CSS_MAPS = ENV !== "production";
 
 module.exports = {
-  context: path.resolve(__dirname, "src"),
+  context: path.resolve(__dirname, "widget"),
   entry: {
     "netlify-identity-widget": "./index.js"
   },
@@ -28,7 +28,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: path.resolve(__dirname, "src"),
+        exclude: path.resolve(__dirname, "widget"),
         enforce: "pre",
         use: "source-map-loader"
       },
@@ -40,7 +40,7 @@ module.exports = {
       {
         // Transform our own .(less|css) files with PostCSS and CSS-modules
         test: /\.(css)$/,
-        include: [path.resolve(__dirname, "src/components")],
+        include: [path.resolve(__dirname, "widget")],
         use: [
           {
             loader: "css-loader",
@@ -135,7 +135,7 @@ module.exports = {
     port: process.env.PORT || 8080,
     host: "localhost",
     publicPath: "/",
-    contentBase: "./src",
+    contentBase: "./widget",
     historyApiFallback: true,
     open: true,
     openPage: "",
